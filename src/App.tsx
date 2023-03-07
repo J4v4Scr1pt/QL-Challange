@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import GlobalStyle from "./GlobalStyles";
+import ArrayChallenge from "./Algorithms/Arraychallenge";
+import TextChallenge from "./Algorithms/TextChallenge";
 
 const Header = styled.h1`
 	background-image: url("https://assets.codepen.io/308367/mountain-with-stars.jpg");
@@ -72,8 +74,28 @@ const HeaderSubText = styled.h2`
 `;
 
 const MainContainer = styled.div`
-	width: min(100% - 3rem, 55rem);
-	margin-inline: auto;
+	display: flex;
+	gap: 20px;
+	flex-direction: column;
+	align-items: center;
+`;
+
+const WrapperAlgorithms = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	& > p {
+		margin-bottom: 50px;
+	}
+`;
+
+const Seperator = styled.div`
+	width: 100%;
+	margin: 50px 0;
+	border-radius: 8px;
+	border-top: 6px solid rgb(255, 95, 31);
+	filter: drop-shadow(rgb(255, 95, 31) 0px 0px 4px) drop-shadow(rgb(255, 95, 31) 0px 0px 15px) contrast(2)
+		brightness(2);
 `;
 
 const App = () => {
@@ -83,112 +105,26 @@ const App = () => {
 			<Header>
 				<HeaderInnerWrapper>
 					<HeaderText>QueensLab</HeaderText>
-					<HeaderSubText>The Challange</HeaderSubText>
+					<HeaderSubText>The Challenge</HeaderSubText>
 				</HeaderInnerWrapper>
 			</Header>
 			<main>
 				<MainContainer>
-					<h2>Lorem ipsum dolor sit amet.</h2>
-					<p>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam perspiciatis
-						itaque ipsam debitis esse deserunt odio exercitationem beatae maxime, ducimus,
-						dignissimos perferendis fuga optio pariatur!
-					</p>
-					<p>
-						Veritatis voluptatum modi harum tempora magni autem mollitia earum voluptate veniam,
-						id eum vitae debitis doloribus sapiente, fuga aspernatur aperiam minus. At aperiam aut
-						harum!
-					</p>
-					<p>
-						Omnis libero soluta quibusdam autem tempora. Neque sint asperiores maiores quaerat cum
-						quam quidem nihil beatae blanditiis distinctio cupiditate eaque, dolorem earum
-						incidunt quod unde.
-					</p>
-					<p>
-						Qui dolores sunt quam cum eius dolorem eligendi illo doloribus, consectetur
-						consequatur. Ut provident asperiores est, error, quam eos dignissimos, ipsam
-						blanditiis soluta dicta aut!
-					</p>
-					<p>
-						Maiores quisquam, reiciendis repellendus assumenda, sed perspiciatis incidunt,
-						laboriosam nisi aut laborum neque? Modi quas officia quia obcaecati consequuntur
-						perferendis quis fuga magnam adipisci iure.
-					</p>
-					<p>
-						Cupiditate sapiente asperiores ab eaque explicabo dolores illo delectus necessitatibus
-						numquam, labore optio itaque modi officia deserunt, incidunt laborum magnam porro
-						nulla architecto adipisci beatae.
-					</p>
-					<p>
-						Odit doloremque eum optio, beatae aut repellendus omnis aliquid cum rerum quisquam
-						laboriosam dicta inventore, natus dolor ipsam autem, asperiores libero earum aliquam.
-						Deserunt, esse!
-					</p>
-					<p>
-						Maiores officiis velit et consectetur in. Dolorum voluptatem, laudantium, incidunt rem
-						temporibus maxime cupiditate accusamus iure maiores repellat iusto mollitia! Ex
-						tempore provident odio deleniti!
-					</p>
-					<p>
-						Ratione voluptatum culpa eum minima, explicabo vel dicta numquam blanditiis iusto.
-						Odio nam consectetur mollitia itaque pariatur, quisquam similique praesentium
-						assumenda, voluptatum aliquid voluptatem atque?
-					</p>
-					<p>
-						Officiis sunt illum explicabo rerum libero consequatur veritatis error, recusandae
-						iure provident, velit accusamus beatae enim ab! Repellendus, nam dolores temporibus
-						architecto ab quidem nisi.
-					</p>
-					<p>
-						Molestiae ad eaque placeat earum ipsum libero non ea consequuntur quos ratione, in
-						corporis maxime aliquid distinctio? Illo, praesentium. Perspiciatis sapiente nobis
-						ipsa veritatis quis.
-					</p>
-					<p>
-						Vitae magnam, dicta modi architecto accusamus numquam. Odio rem, aut accusantium
-						inventore aperiam voluptate velit eveniet quasi temporibus debitis hic culpa sed
-						optio. Eos, maxime.
-					</p>
-					<p>
-						At alias provident, iure nisi non placeat saepe sit labore accusamus, repudiandae iste
-						ullam hic magni dicta officia animi explicabo officiis ratione fugiat reiciendis!
-						Assumenda?
-					</p>
-					<p>
-						Hic enim blanditiis quidem corrupti similique, soluta dolorem aliquam facere
-						distinctio nihil voluptas adipisci molestias officiis repellat. Similique, blanditiis
-						quae esse reiciendis impedit reprehenderit nemo?
-					</p>
-					<p>
-						Itaque distinctio voluptatem fuga omnis nihil perferendis sequi architecto autem sunt
-						accusamus hic ipsa repellat, harum ratione maxime ad libero consequatur rerum. Velit,
-						illum libero!
-					</p>
-					<p>
-						Vero illo dicta magni ratione obcaecati, iure amet impedit, cupiditate necessitatibus
-						fugit officia, aliquam id accusamus. Porro quisquam id ex aperiam, atque facere minima
-						temporibus!
-					</p>
-					<p>
-						Voluptates aperiam maiores enim veniam? Inventore pariatur cumque nemo esse tempore,
-						ab doloribus corporis dignissimos nisi laborum id mollitia sapiente repudiandae
-						excepturi cupiditate, odit quibusdam.
-					</p>
-					<p>
-						Dolores alias nemo perferendis officiis. Esse alias nihil ducimus distinctio delectus
-						voluptates incidunt odio obcaecati, officia repudiandae ab velit sint consequatur
-						debitis, quod tempora quibusdam.
-					</p>
-					<p>
-						Illum, earum ab! Eligendi sit cupiditate saepe quis ducimus accusamus eius magni
-						blanditiis quisquam provident mollitia itaque ab nulla officia, alias tenetur
-						molestiae quia quod?
-					</p>
-					<p>
-						Inventore amet iste ratione dicta maxime, id doloremque eius laboriosam recusandae
-						assumenda illum voluptatem, mollitia nisi perspiciatis dolore architecto, hic
-						accusantium labore ipsa. Consequuntur, quod.
-					</p>
+					<WrapperAlgorithms>
+						<h3>Algorithms</h3>
+						<p>
+							A function that finds and removes instances of four identical consecutive
+							lowercase letters. Write a text and click analyze to view the output.{" "}
+						</p>
+						<TextChallenge />
+						<Seperator />
+						<p>
+							A function that takes an array of numbers and returns the maximum sum of two
+							numbers whose digits have an odd sum. Write a comma separated list of numbers.
+						</p>
+						<ArrayChallenge />
+					</WrapperAlgorithms>
+					<h3>Payment</h3>
 				</MainContainer>
 			</main>
 		</>
