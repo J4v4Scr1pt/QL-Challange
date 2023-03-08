@@ -1,11 +1,11 @@
-import styled, { keyframes } from "styled-components";
-import GlobalStyle from "./GlobalStyles";
-import ArrayChallenge from "./Algorithms/Arraychallenge";
-import TextChallenge from "./Algorithms/TextChallenge";
-import PaymentForm from "./Payment/PaymentForm";
+import styled, { keyframes } from 'styled-components';
+import GlobalStyle from './GlobalStyles';
+import ArrayChallenge from './Algorithms/Arraychallenge';
+import TextChallenge from './Algorithms/TextChallenge';
+import PaymentForm from './Payment/PaymentForm';
 
 const Header = styled.h1`
-	background-image: url("https://assets.codepen.io/308367/mountain-with-stars.jpg");
+	background-image: url('https://assets.codepen.io/308367/mountain-with-stars.jpg');
 	background-position: bottom;
 	background-size: cover;
 	padding: 5rem;
@@ -17,7 +17,7 @@ const HeaderInnerWrapper = styled.div`
 	position: absolute;
 	inset: 0;
 	background: rgb(0 0 0 / 0.5);
-	mask: url("https://assets.codepen.io/308367/mountain-mask.svg");
+	mask: url('https://assets.codepen.io/308367/mountain-mask.svg');
 	mask-position: bottom;
 	mask-size: cover;
 `;
@@ -96,12 +96,12 @@ const Seperator = styled.div<{
 	seperatorColor: string | null;
 	width: string | null;
 }>`
-	width: ${({ width }) => width || "100%"};
+	width: ${({ width }) => width || '100%'};
 	margin: 50px 0;
 	border-radius: 8px;
-	border-top: 6px solid ${({ seperatorColor }) => seperatorColor || "rgb(255, 95, 31)"};
-	filter: drop-shadow(${({ seperatorColor }) => seperatorColor || "rgb(255, 95, 31)"} 0px 0px 4px)
-		drop-shadow(${({ seperatorColor }) => seperatorColor || "rgb(255, 95, 31)"} 0px 0px 15px) contrast(2)
+	border-top: 6px solid ${({ seperatorColor }) => seperatorColor || 'rgb(255, 95, 31)'};
+	filter: drop-shadow(${({ seperatorColor }) => seperatorColor || 'rgb(255, 95, 31)'} 0px 0px 4px)
+		drop-shadow(${({ seperatorColor }) => seperatorColor || 'rgb(255, 95, 31)'} 0px 0px 15px) contrast(2)
 		brightness(2);
 `;
 const LinkedInBar = styled.div`
@@ -190,7 +190,7 @@ const App = () => {
 							lowercase letters. Write a text and click analyze to view the output.
 						</p>
 						<TextChallenge />
-						<Seperator {...{ seperatorColor: "rgb(15, 255, 80)", width: "50%" }} />
+						<Seperator {...{ seperatorColor: 'rgb(15, 255, 80)', width: '50%' }} />
 						<p>
 							A function that takes an array of numbers and returns the maximum sum of two
 							numbers whose digits have an odd sum. Write a comma separated list of numbers.
@@ -204,14 +204,14 @@ const App = () => {
 				<SocialButtonsWrapper>
 					<LinkedInButton
 						{...{
-							onClick: () => window.open("https://www.linkedin.com/in/tomasostlind/", "_blank"),
+							onClick: () => window.open('https://www.linkedin.com/in/tomasostlind/', '_blank'),
 						}}>
 						<LinkedInBar />
 					</LinkedInButton>
 					<GithubButton
 						{...{
 							onClick: () =>
-								window.open("https://github.com/J4v4Scr1pt/QL-Challange", "_blank"),
+								window.open('https://github.com/J4v4Scr1pt/QL-Challange', '_blank'),
 						}}>
 						<GithubBar />
 					</GithubButton>

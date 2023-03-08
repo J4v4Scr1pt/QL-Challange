@@ -1,97 +1,15 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
-import styled, { keyframes, css } from "styled-components";
-import DropDown from "../sharedComponents/DropDown";
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
+import DropDown from '../sharedComponents/DropDown';
+import { Shake, ScaleIn, ScaleOut, BtnAnim1, BtnAnim2, BtnAnim3, BtnAnim4 } from './Animatons';
 import ValidCard, {
 	validCardHolder,
 	validMonth,
 	validYear,
 	validCvc,
 	validCardNumber,
-} from "./CreditCardValidation";
+} from './CreditCardValidation';
 
-const Shake = keyframes`
-0%,
-100% {
-		  transform: rotate(0deg);
-		  transform-origin: 50% 100%;
-}
-10% {
-		  transform: rotate(1deg);
-}
-20%,
-40%,
-60% {
-		  transform: rotate(-2deg);
-}
-30%,
-50%,
-70% {
-		  transform: rotate(2deg);
-}
-80% {
-		  transform: rotate(-1deg);
-}
-90% {
-		  transform: rotate(1deg);
-}
-`;
-
-const ScaleIn = keyframes`
-    0% {
-      -webkit-transform: scaleY(0);
-              transform: scaleY(0);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scaleY(1);
-              transform: scaleY(1);
-      opacity: 1;
-    }
-`;
-const ScaleOut = keyframes`
-0% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scaleY(0);
-            transform: scaleY(0);
-    opacity: 1;
-  }
-`;
-const BtnAnim1 = keyframes`
-0% {
-    left: -100%;
-  }
-  50%,100% {
-    left: 100%;
-  }
-`;
-const BtnAnim2 = keyframes`
-0% {
-    top: -100%;
-  }
-  50%,100% {
-    top: 100%;
-  }
-`;
-const BtnAnim3 = keyframes`
-0% {
-    right: -100%;
-  }
-  50%,100% {
-    right: 100%;
-  }
-`;
-const BtnAnim4 = keyframes`
-0% {
-    bottom: -100%;
-  }
-  50%,100% {
-    bottom: 100%;
-  }
-`;
 const FormWrapper = styled.div<{ invalidCard: boolean }>`
 	display: flex;
 	width: 600px;
@@ -126,13 +44,13 @@ const InputWrapper = styled.div<{
 	mb: string | null;
 }>`
 	position: relative;
-	width: ${({ width }) => width || "100%"};
+	width: ${({ width }) => width || '100%'};
 	& > input {
 		width: 100%;
 		padding: 10px 0;
 		font-size: 16px;
 		color: #fff;
-		margin-bottom: ${({ mb }) => mb || "30px"};
+		margin-bottom: ${({ mb }) => mb || '30px'};
 		border: none;
 		border-bottom: 1px solid #fff;
 		outline: none;
@@ -150,7 +68,7 @@ const InputWrapper = styled.div<{
 				? `		text-security: disc;
 		-webkit-text-security: disc;
 		-moz-text-security: disc;`
-				: ""};
+				: ''};
 	}
 	& > label {
 		position: absolute;
@@ -259,7 +177,7 @@ const ValidationPopup = styled.div<{ showInvalidCardTip: boolean }>`
 	filter: drop-shadow(rgb(255, 49, 49) 0px 0px 15px) drop-shadow(rgb(255, 49, 49) 0px 0px 50px) contrast(2)
 		brightness(2);
 	::before {
-		content: "";
+		content: '';
 		left: -35px;
 		display: inline-block;
 		border-right: 6px solid rgb(255, 49, 49);
@@ -291,33 +209,33 @@ const CheckList = styled.ul<{
 		color: rgba(4, 217, 255, 1);
 	}
 	li:nth-child(1)::marker {
-		content: "${({ validCardNumber }) => (validCardNumber ? "✅  " : "❌  ")}";
+		content: '${({ validCardNumber }) => (validCardNumber ? '✅  ' : '❌  ')}';
 	}
 	li:nth-child(2)::marker {
-		content: "${({ validCardHolder }) => (validCardHolder ? "✅  " : "❌  ")}";
+		content: '${({ validCardHolder }) => (validCardHolder ? '✅  ' : '❌  ')}';
 	}
 	li:nth-child(3)::marker {
-		content: "${({ validMonth }) => (validMonth ? "✅  " : "❌  ")}";
+		content: '${({ validMonth }) => (validMonth ? '✅  ' : '❌  ')}';
 	}
 	li:nth-child(4)::marker {
-		content: "${({ validYear }) => (validYear ? "✅  " : "❌  ")}";
+		content: '${({ validYear }) => (validYear ? '✅  ' : '❌  ')}';
 	}
 	li:nth-child(5)::marker {
-		content: "${({ validCvc }) => (validCvc ? "✅  " : "❌  ")}";
+		content: '${({ validCvc }) => (validCvc ? '✅  ' : '❌  ')}';
 	}
 `;
 
 const PaymentForm = () => {
-	const [cardBrand, setCardBrand] = useState<string>("CreditCard");
-	const [cardNmb, setCardNmb] = useState<string>("");
-	const [cardHld, setCardHld] = useState<string>("");
-	const [cvc, setCvc] = useState<string>("");
-	const [selectedMonth, setSelectedMonth] = useState<string>("");
-	const [selectedYear, setSelectedYear] = useState<string>("");
+	const [cardBrand, setCardBrand] = useState<string>('CreditCard');
+	const [cardNmb, setCardNmb] = useState<string>('');
+	const [cardHld, setCardHld] = useState<string>('');
+	const [cvc, setCvc] = useState<string>('');
+	const [selectedMonth, setSelectedMonth] = useState<string>('');
+	const [selectedYear, setSelectedYear] = useState<string>('');
 	const [invalidCard, setInvalidCard] = useState<boolean>(false);
 	const [showInvalidCardTip, setShowInvalidCardTip] = useState<boolean>(false);
-	const months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
-	const years = ["2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033"];
+	const months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+	const years = ['2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033'];
 
 	useEffect(() => {
 		const IsVisa = /^4[0-9]{6,}$/.test(cardNmb);
@@ -326,10 +244,10 @@ const PaymentForm = () => {
 				cardNmb
 			);
 		const IsAE = /^3[47][0-9]{5,}$/.test(cardNmb);
-		if (IsVisa) setCardBrand("Visa");
-		if (IsMasterCard) setCardBrand("Mastercard");
-		if (IsAE) setCardBrand("American Express");
-		if (!IsAE && !IsMasterCard && !IsVisa && cardNmb.length >= 9) setCardBrand("Unknown");
+		if (IsVisa) setCardBrand('Visa');
+		if (IsMasterCard) setCardBrand('Mastercard');
+		if (IsAE) setCardBrand('American Express');
+		if (!IsAE && !IsMasterCard && !IsVisa && cardNmb.length >= 9) setCardBrand('Unknown');
 	}, [cardNmb]);
 
 	const onChangeMonth = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -344,7 +262,7 @@ const PaymentForm = () => {
 
 	const onChangeCardNmb = (e: ChangeEvent<HTMLInputElement>) => {
 		if (showInvalidCardTip) setShowInvalidCardTip(false);
-		setCardNmb(e.target.value.length > 0 ? e.target.value : "CreditCard");
+		setCardNmb(e.target.value.length > 0 ? e.target.value : 'CreditCard');
 	};
 
 	const onChangeCardHld = (e: ChangeEvent<HTMLInputElement>) => {
@@ -366,17 +284,17 @@ const PaymentForm = () => {
 			return;
 		}
 		// Reset form
-		const audio = new Audio("https://www.myinstants.com/media/sounds/money_2.mp3");
+		const audio = new Audio('https://www.myinstants.com/media/sounds/money_2.mp3');
 		audio.play();
-		setCardBrand("CreditCard");
-		setCvc("");
-		setCardHld("");
-		setCardNmb("");
-		setSelectedYear("");
-		setSelectedMonth("");
+		setCardBrand('CreditCard');
+		setCvc('');
+		setCardHld('');
+		setCardNmb('');
+		setSelectedYear('');
+		setSelectedMonth('');
 	};
 	const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-		if (!/[0-9\n]/.test(e.key) && e.key !== "Backspace") e.preventDefault();
+		if (!/[0-9\n]/.test(e.key) && e.key !== 'Backspace') e.preventDefault();
 	};
 
 	return (
@@ -393,21 +311,23 @@ const PaymentForm = () => {
 			<DateCvcWrapper>
 				<DropDown
 					{...{
+						dataTestid: 'month-dropdown',
 						onChange: onChangeMonth,
 						options: months,
-						selectLabel: "Month",
+						selectLabel: 'Month',
 						selected: selectedMonth,
 					}}
 				/>
 				<DropDown
 					{...{
+						dataTestid: 'year-dropdown',
 						onChange: onChangeYear,
 						options: years,
-						selectLabel: "Year",
+						selectLabel: 'Year',
 						selected: selectedYear,
 					}}
 				/>
-				<InputWrapper {...{ useSecurity: true, hasValue: cvc.length > 0, width: "50px", mb: "0" }}>
+				<InputWrapper {...{ useSecurity: true, hasValue: cvc.length > 0, width: '50px', mb: '0' }}>
 					<input
 						type="text"
 						inputMode="numeric"
@@ -427,7 +347,7 @@ const PaymentForm = () => {
 				<span></span>
 				Submit
 			</SubmitButton>
-			<ValidationPopup {...{ showInvalidCardTip }}>
+			<ValidationPopup data-testid="ValidationBox" {...{ showInvalidCardTip }}>
 				<CheckList {...{ validCardHolder, validMonth, validYear, validCvc, validCardNumber }}>
 					<li>Valid Creditcard number</li>
 					<li>Valid holder name</li>

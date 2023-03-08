@@ -1,5 +1,5 @@
-import { ChangeEventHandler } from "react";
-import styled from "styled-components";
+import { ChangeEventHandler } from 'react';
+import styled from 'styled-components';
 
 const StyledSelect = styled.select`
 	border-radius: 4px;
@@ -28,14 +28,17 @@ type Props = {
 	options: Array<string>;
 	selected: string;
 	selectLabel: string;
+	dataTestid: string;
 };
 
-const DropDown = ({ onChange, options, selectLabel, selected }: Props) => {
+const DropDown = ({ onChange, options, selectLabel, selected, dataTestid }: Props) => {
 	return (
-		<StyledSelect {...{ onChange, value: selected }}>
+		<StyledSelect data-testid={dataTestid} {...{ onChange, value: selected }}>
 			<StyledOption value="">{selectLabel}</StyledOption>
 			{options.map((item, index) => (
-				<StyledOption key={index + item}>{item}</StyledOption>
+				<StyledOption key={index + item} value={item}>
+					{item}
+				</StyledOption>
 			))}
 		</StyledSelect>
 	);

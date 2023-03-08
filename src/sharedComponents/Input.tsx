@@ -1,5 +1,5 @@
-import { ChangeEventHandler } from "react";
-import styled from "styled-components";
+import { ChangeEventHandler } from 'react';
+import styled from 'styled-components';
 
 const StyledInput = styled.input`
 	border-radius: 8px;
@@ -16,8 +16,9 @@ const StyledInput = styled.input`
 `;
 type Props = {
 	onChange: ChangeEventHandler<HTMLInputElement>;
+	dataTestid: string;
 };
 
-const Input = ({ onChange }: Props) => <StyledInput {...{ onChange }} />;
+const Input = ({ onChange, dataTestid }: Props) => <StyledInput data-testid={dataTestid} {...{ onChange }} />;
 
 export default Input;

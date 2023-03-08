@@ -1,8 +1,8 @@
-import { ChangeEvent, useState } from "react";
-import styled from "styled-components";
-import Button from "../sharedComponents/Button";
-import Input from "../sharedComponents/Input";
-import OutputFrame from "../sharedComponents/OutputFrame";
+import { ChangeEvent, useState } from 'react';
+import styled from 'styled-components';
+import Button from '../sharedComponents/Button';
+import Input from '../sharedComponents/Input';
+import OutputFrame from '../sharedComponents/OutputFrame';
 
 const Wrapper = styled.div`
 	width: 100%;
@@ -56,7 +56,7 @@ const ArrayChallenge = () => {
 	const [numbers, setNumbers] = useState(new Array<number>());
 	const [oddNumbers, setOddNumbers] = useState(new Array<number>());
 	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setNumbers(e.currentTarget.value.split(",").map(Number));
+		setNumbers(e.currentTarget.value.split(',').map(Number));
 	};
 
 	const onClick = () => {
@@ -65,13 +65,13 @@ const ArrayChallenge = () => {
 	return (
 		<Wrapper>
 			<InputButtonWrapper>
-				<Input {...{ onChange }} />
+				<Input {...{ onChange, dataTestid: 'array-challange-input' }} />
 				<Button {...{ onClick }}>Analyze Array</Button>
 			</InputButtonWrapper>
 			<OutputFrame>
 				<OutputWrapper>
 					<h2>Odd numbers</h2>
-					<p>{oddNumbers.length > 0 && oddNumbers.join(", ")}</p>
+					<p>{oddNumbers.length > 0 && oddNumbers.join(', ')}</p>
 					<h2>Largest odd number</h2>
 					<p>{oddNumbers.length > 0 && Math.max(...oddNumbers).toString()}</p>
 				</OutputWrapper>

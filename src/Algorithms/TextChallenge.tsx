@@ -1,8 +1,8 @@
-import { ChangeEvent, useState } from "react";
-import styled from "styled-components";
-import Input from "../sharedComponents/Input";
-import Button from "../sharedComponents/Button";
-import OutputFrame from "../sharedComponents/OutputFrame";
+import { ChangeEvent, useState } from 'react';
+import styled from 'styled-components';
+import Input from '../sharedComponents/Input';
+import Button from '../sharedComponents/Button';
+import OutputFrame from '../sharedComponents/OutputFrame';
 
 const Wrapper = styled.div`
 	width: 100%;
@@ -90,16 +90,16 @@ const checkForRepeatedCharsIterative = (text: string): string => {
 };
 
 const TextChallenge = () => {
-	const [text, setText] = useState("");
-	const [trimedText, setTrimedText] = useState("");
+	const [text, setText] = useState('');
+	const [trimedText, setTrimedText] = useState('');
 	const [timerValues, setTimerValues] = useState({
-		timerOne: "",
-		timerTwo: "",
+		timerOne: '',
+		timerTwo: '',
 	});
 
 	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setTrimedText("");
-		setTimerValues({ timerOne: "", timerTwo: "" });
+		setTrimedText('');
+		setTimerValues({ timerOne: '', timerTwo: '' });
 		setText(e.currentTarget.value);
 	};
 
@@ -109,10 +109,10 @@ const TextChallenge = () => {
 		const t0 = performance.now();
 		try {
 			const recursiveText = checkForRepeatedCharsRecursive(text, 0, 0, 0, 0);
-			console.log("🚀 ~ recursive method ~ recursiveText:", recursiveText);
-			console.log("🚀 ~ recursive method ~ charsRemoved:", text.length - recursiveText.length);
+			console.log('🚀 ~ recursive method ~ recursiveText:', recursiveText);
+			console.log('🚀 ~ recursive method ~ charsRemoved:', text.length - recursiveText.length);
 		} catch (err) {
-			console.log("🚀 ~  recursive methodFailed:", err);
+			console.log('🚀 ~  recursive methodFailed:', err);
 		}
 		const t1 = performance.now();
 
@@ -126,7 +126,7 @@ const TextChallenge = () => {
 	return (
 		<Wrapper>
 			<InputButtonWrapper>
-				<Input {...{ onChange }} />
+				<Input {...{ onChange, dataTestid: 'text-challange-input' }} />
 				<Button {...{ onClick }}>Analyze Text</Button>
 			</InputButtonWrapper>
 			<OutputFrame>
