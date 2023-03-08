@@ -13,6 +13,7 @@ const config = {
 		moduleIds: "deterministic",
 		runtimeChunk: "single",
 		splitChunks: {
+			chunks: 'all',
 			cacheGroups: {
 				vendors: {
 					test: /[\\/]node_modules[\\/]/,
@@ -52,9 +53,6 @@ const config = {
 				</body>
 			</html>
   ` })],
-	experiments: {
-		topLevelAwait: true,
-	},
 };
 
 export default config;
