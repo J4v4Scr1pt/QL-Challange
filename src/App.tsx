@@ -92,12 +92,16 @@ const WrapperAlgorithms = styled.div`
 	}
 `;
 
-const Seperator = styled.div`
-	width: 100%;
+const Seperator = styled.div<{
+	seperatorColor: string | null;
+	width: string | null;
+}>`
+	width: ${({ width }) => width || "100%"};
 	margin: 50px 0;
 	border-radius: 8px;
-	border-top: 6px solid rgb(255, 95, 31);
-	filter: drop-shadow(rgb(255, 95, 31) 0px 0px 4px) drop-shadow(rgb(255, 95, 31) 0px 0px 15px) contrast(2)
+	border-top: 6px solid ${({ seperatorColor }) => seperatorColor || "rgb(255, 95, 31)"};
+	filter: drop-shadow(${({ seperatorColor }) => seperatorColor || "rgb(255, 95, 31)"} 0px 0px 4px)
+		drop-shadow(${({ seperatorColor }) => seperatorColor || "rgb(255, 95, 31)"} 0px 0px 15px) contrast(2)
 		brightness(2);
 `;
 const LinkedInBar = styled.div`
@@ -180,38 +184,39 @@ const App = () => {
 				<MainContainer>
 					<WrapperAlgorithms>
 						<h2>Algorithms</h2>
-						<Seperator />
+						<Seperator {...{ seperatorColor: null, width: null }} />
 						<p>
 							A function that finds and removes instances of four identical consecutive
 							lowercase letters. Write a text and click analyze to view the output.
 						</p>
 						<TextChallenge />
-						<Seperator />
+						<Seperator {...{ seperatorColor: "rgb(15, 255, 80)", width: "50%" }} />
 						<p>
 							A function that takes an array of numbers and returns the maximum sum of two
 							numbers whose digits have an odd sum. Write a comma separated list of numbers.
 						</p>
 						<ArrayChallenge />
-						<Seperator />
+						<Seperator {...{ seperatorColor: null, width: null }} />
 					</WrapperAlgorithms>
 					<h3>Payment</h3>
 					<PaymentForm />
 				</MainContainer>
+				<SocialButtonsWrapper>
+					<LinkedInButton
+						{...{
+							onClick: () => window.open("https://www.linkedin.com/in/tomasostlind/", "_blank"),
+						}}>
+						<LinkedInBar />
+					</LinkedInButton>
+					<GithubButton
+						{...{
+							onClick: () =>
+								window.open("https://github.com/J4v4Scr1pt/QL-Challange", "_blank"),
+						}}>
+						<GithubBar />
+					</GithubButton>
+				</SocialButtonsWrapper>
 			</main>
-			<SocialButtonsWrapper>
-				<LinkedInButton
-					{...{
-						onClick: () => window.open("https://www.linkedin.com/in/tomasostlind/", "_blank"),
-					}}>
-					<LinkedInBar />
-				</LinkedInButton>
-				<GithubButton
-					{...{
-						onClick: () => window.open("https://github.com/J4v4Scr1pt/QL-Challange", "_blank"),
-					}}>
-					<GithubBar />
-				</GithubButton>
-			</SocialButtonsWrapper>
 		</>
 	);
 };
