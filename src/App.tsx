@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import GlobalStyle from "./GlobalStyles";
 import ArrayChallenge from "./Algorithms/Arraychallenge";
 import TextChallenge from "./Algorithms/TextChallenge";
+import PaymentForm from "./Payment/PaymentForm";
 
 const Header = styled.h1`
 	background-image: url("https://assets.codepen.io/308367/mountain-with-stars.jpg");
@@ -78,6 +79,7 @@ const MainContainer = styled.div`
 	gap: 20px;
 	flex-direction: column;
 	align-items: center;
+	margin-bottom: 100px;
 `;
 
 const WrapperAlgorithms = styled.div`
@@ -85,6 +87,7 @@ const WrapperAlgorithms = styled.div`
 	flex-direction: column;
 	align-items: center;
 	& > p {
+		font-size: 1.5rem;
 		margin-bottom: 50px;
 	}
 `;
@@ -96,6 +99,71 @@ const Seperator = styled.div`
 	border-top: 6px solid rgb(255, 95, 31);
 	filter: drop-shadow(rgb(255, 95, 31) 0px 0px 4px) drop-shadow(rgb(255, 95, 31) 0px 0px 15px) contrast(2)
 		brightness(2);
+`;
+const LinkedInBar = styled.div`
+	position: absolute;
+	top: -15%;
+	left: -5%;
+	width: 110%;
+	height: 5px;
+	border-radius: 8px;
+	transition: all 0.25s ease-in-out;
+	background-color: #0a66c2;
+`;
+const LinkedInButton = styled.div`
+	background-image: url(https://cdn-icons-png.flaticon.com/128/3536/3536505.png);
+	position: relative;
+	width: 70px;
+	height: 70px;
+	margin: 20px;
+	background-size: cover;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	filter: grayscale(100%);
+	transition: all 0.25s ease-in-out;
+	&:hover {
+		filter: grayscale(0%);
+		${LinkedInBar} {
+			top: 115%;
+		}
+	}
+`;
+const GithubBar = styled.div`
+	position: absolute;
+	top: -15%;
+	left: -5%;
+	width: 110%;
+	height: 5px;
+	border-radius: 8px;
+	transition: all 0.25s ease-in-out;
+	background-color: #6e5494;
+`;
+const GithubButton = styled.div`
+	background-image: url(https://cdn-icons-png.flaticon.com/512/733/733553.png);
+	position: relative;
+	width: 70px;
+	height: 70px;
+	margin: 20px;
+	background-size: cover;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	filter: grayscale(100%);
+	transition: all 0.25s ease-in-out;
+	&:hover {
+		filter: grayscale(0%);
+		${GithubBar} {
+			top: 115%;
+		}
+	}
+`;
+const SocialButtonsWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-bottom: 50px;
 `;
 
 const App = () => {
@@ -111,10 +179,11 @@ const App = () => {
 			<main>
 				<MainContainer>
 					<WrapperAlgorithms>
-						<h3>Algorithms</h3>
+						<h2>Algorithms</h2>
+						<Seperator />
 						<p>
 							A function that finds and removes instances of four identical consecutive
-							lowercase letters. Write a text and click analyze to view the output.{" "}
+							lowercase letters. Write a text and click analyze to view the output.
 						</p>
 						<TextChallenge />
 						<Seperator />
@@ -123,10 +192,26 @@ const App = () => {
 							numbers whose digits have an odd sum. Write a comma separated list of numbers.
 						</p>
 						<ArrayChallenge />
+						<Seperator />
 					</WrapperAlgorithms>
 					<h3>Payment</h3>
+					<PaymentForm />
 				</MainContainer>
 			</main>
+			<SocialButtonsWrapper>
+				<LinkedInButton
+					{...{
+						onClick: () => window.open("https://www.linkedin.com/in/tomasostlind/", "_blank"),
+					}}>
+					<LinkedInBar />
+				</LinkedInButton>
+				<GithubButton
+					{...{
+						onClick: () => window.open("https://github.com/J4v4Scr1pt/QL-Challange", "_blank"),
+					}}>
+					<GithubBar />
+				</GithubButton>
+			</SocialButtonsWrapper>
 		</>
 	);
 };

@@ -72,7 +72,7 @@ const ArrayChallenge = () => {
 				<OutputWrapper>
 					<h2>Odd numbers</h2>
 					<p>{oddNumbers.length > 0 && oddNumbers.join(", ")}</p>
-					<h2>Largest odd numbers</h2>
+					<h2>Largest odd number</h2>
 					<p>{oddNumbers.length > 0 && Math.max(...oddNumbers).toString()}</p>
 				</OutputWrapper>
 			</OutputFrame>
